@@ -1,0 +1,21 @@
+import time, random, sys
+
+def animator(final_text, spins=20, delay=0.05):
+    chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 !?.,'
+    display = [' '] * len(final_text)
+    
+    for _ in range(spins):
+        for i in range(len(final_text)):
+            display[i] = random.choice(chars)
+        sys.stdout.write('\r' + ''.join(display))
+        sys.stdout.flush()
+        time.sleep(delay)
+    
+    for i in range(len(final_text)):
+        display[i] = final_text[i]
+        sys.stdout.write('\r' + ''.join(display))
+        sys.stdout.flush()
+        time.sleep(delay * 5)
+    print()
+
+animator("Hey uwu!")
